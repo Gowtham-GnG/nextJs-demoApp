@@ -1,0 +1,19 @@
+
+  .movieList {
+    /* grid-template-rows: repeat(auto-fit,minmax(12rem,2fr)); */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 3fr));
+    gap: 1rem;
+  }
+  .movieContainer {
+    overflow: hidden;
+    width: 15rem;
+    margin: 2rem;
+    padding: 1rem;
+  }
+  
+  .movieImg {
+    /* height: 18rem; */
+    width: 15rem;
+    object-fit: cover;
+  }
