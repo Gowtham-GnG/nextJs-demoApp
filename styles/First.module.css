@@ -2,7 +2,7 @@
   .movieList {
     /* grid-template-rows: repeat(auto-fit,minmax(12rem,2fr)); */
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(150px, 3fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
   }
   .movieContainer {
@@ -13,7 +13,7 @@
   }
   
   .movieImg {
-    /* height: 18rem; */
+    height: 18rem;
     width: 15rem;
     object-fit: cover;
   }

@@ -26,7 +26,7 @@ function UpdateMovie(){
 function MovieEdit({id,name,image}:any){
     console.log(id,name,image)
     const editMovie= (updatedMovie:any) => {
-    useEffect(() => {
+
         fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,
         {method:'PUT',
         body:JSON.stringify(updatedMovie),
@@ -35,7 +35,7 @@ function MovieEdit({id,name,image}:any){
         },})
         .then(response => response.json())
         .then((data) => console.log(data));
-    }),[]
+   
       }
 
       const formik = useFormik({

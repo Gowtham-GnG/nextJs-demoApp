@@ -32,7 +32,7 @@ const Movie =({movies}:any) =>{
   return(
     <div className={styles.movieList}>
       {movies.map(({id,movie,poster}:any) => 
-      <div className={styles.movieContainer}>
+      <div className={styles.movieContainer} key={id}>
           <img src={poster} alt="" />
           <h4>{id}</h4>
           <h3 className={styles.movieImg}>{movie}</h3>

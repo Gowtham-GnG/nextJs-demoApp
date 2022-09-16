@@ -22,6 +22,7 @@ export function NewMovie(){
 
     return(
     <div>
+      <h1>Add Movies</h1>
      <form onSubmit={formik.handleSubmit}>
         <div>
 
