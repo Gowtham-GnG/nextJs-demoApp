@@ -1,34 +1,28 @@
 import { useRouter } from "next/router"
 import { useEffect, useState } from "react"
 import styles from '/styles/First.module.css'
-import { useQuery } from 'react-query'
+import { useMutation, useQuery, useQueryClient } from 'react-query'
+import axios from "axios";
+import { useMovieData } from "../../hooks/useMoviesData";
 
 function GetMovie(){
-    const router = useRouter()
-    const [state,setState]:any = useState([]);
-    const {id} = router.query
-    // console.log(id)
-  useEffect(() => {
-    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,{method:'GET'})
-    .then(data => data.json())
-    .then(res => setState(res))
-  })
 
-  // const { isLoading, error, data } = useQuery('repoData', () =>
-  //   fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}?format=json`,{method:'GET'})
-  //   .then(res => res.json())
-  //  )
+  const router = useRouter()
+
+  const {id} = router.query
  
-  //  if (isLoading) return 'Loading...'
- 
-  //  if (error) return 'An error has occurred: ' + error
+    const { isLoading, error, data, isFetching } = useMovieData(id)
+   
+     if (isLoading) return 'Loading...'
+   
+     if (error) return 'An error has occurred: ' + error
   
-    return(
+    return(      
       <div className={styles.movieList}>     
       <div className={styles.movieContainer}>
-          <img src={state.poster} alt="" />
-          <h4>{state.id}</h4>
-          <h3 className={styles.movieImg}>{state.movie}</h3>
+          <img src={data.poster} alt="" />
+          <h4>{data.id}</h4>
+          <h3 className={styles.movieImg}>{data.movie}</h3>
        </div>
       </div>
     )

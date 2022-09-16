@@ -2,23 +2,21 @@ import { useFormik } from "formik";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import * as yup from 'yup';
+import { useMovieData } from "../../../hooks/useMoviesData";
 
 function UpdateMovie(){
    const router = useRouter()
    const {id} = router.query
 
-   const[movieinfo,setMovie]:any = useState()
-   const getinfo =() =>{
-     fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,{method : "GET"})
-     .then((response) => response.json())
-     .then((data) => setMovie(data));}
+  const { isLoading, error, data, isFetching } = useMovieData(id)
    
-     useEffect(getinfo)
-    //  console.log(movieinfo)
+  if (isLoading) return 'Loading...'
+
+  if (error) return 'An error has occurred: ' + error
 
    return(
     <div>
-        {movieinfo ? <MovieEdit id={movieinfo.id} name={movieinfo.movie} image={movieinfo.poster}/> : ""}
+        {data ? <MovieEdit id={data.id} name={data.movie} image={data.poster}/> : ""}
     </div>
    )
 }
