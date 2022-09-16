@@ -3,6 +3,7 @@ import styles from '/styles/First.module.css'
 import { useQuery } from 'react-query'
 
 function App(){
+  const [state,setState] = useState([])
 
   const { isLoading, error, data } = useQuery('repoData', () =>
     fetch("https://61c412e3f1af4a0017d99283.mockapi.io/games")
@@ -21,7 +22,7 @@ function App(){
   // console.log(state)
   return(
   <div>
-      <Movie movies={data} />
+     {data != "" ? <Movie movies={data} /> : "" }
  </div>
   )
 }

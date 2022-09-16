@@ -15,7 +15,7 @@ function GetMovie(){
   // })
 
   const { isLoading, error, data } = useQuery('repoData', () =>
-    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}`,{method:'GET'})
+    fetch(`https://61c412e3f1af4a0017d99283.mockapi.io/games/${id}?format=json`,{method:'GET'})
     .then(res => res.json())
    )
  
